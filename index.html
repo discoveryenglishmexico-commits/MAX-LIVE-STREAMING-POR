@@ -537,16 +537,15 @@ startBtn.addEventListener('click',async function(){
     width:'100%',
     height:'100%',
     lang:'es',
+    /* Configuración MÍNIMA: idéntica a la que Jitsi usa nativamente
+       (por eso directo sí te muestra la pizarra). No tocamos la barra. */
     configOverwrite:{
       startWithAudioMuted:true,
       startWithVideoMuted:true,
-      enableClosePage:false,
-      prejoinPageEnabled:false,
-      // Pizarra habilitada
-      whiteboard:{
-        enabled:true,
-        collabServerBaseUrl:'https://whiteboard.8x8.vc'
-      },
+      whiteboard:{enabled:true}   /* refuerzo extra de pizarra */
+    },
+    interfaceConfigOverwrite:{}   /* vacío, igual que tu versión de Weebly */
+  };
       // Asegurar que la toolbar esté siempre visible
       toolbarConfig:{
         autoHideWhileInPiPMode:false,
