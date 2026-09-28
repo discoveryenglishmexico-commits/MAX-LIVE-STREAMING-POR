@@ -1,19 +1,4 @@
-
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <style>
-                body {
-                  background-color: white; /* Ensure the iframe has a white background */
-                }
-
-                
-              </style>
-                        </head>
-                        <body>
-                            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -149,7 +134,7 @@ h2{
 h2 .grad{background:linear-gradient(90deg,var(--orange),var(--orange2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .sec-head p{color:var(--muted);max-width:760px;margin:0 auto}
 
-/* ============ JITSI CONTAINER (estilo Discovery MAX) ============ */
+/* ============ JITSI CONTAINER (OPTIMIZADO) ============ */
 .jitsi-wrapper{
   max-width:1200px;margin:0 auto;
   background:linear-gradient(160deg,var(--panel),var(--bg2));
@@ -188,14 +173,28 @@ h2 .grad{background:linear-gradient(90deg,var(--orange),var(--orange2));-webkit-
 .session-info .meta{
   font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);margin-top:4px;
 }
+
+/* CONTROLES DE JITSI - RESPONSIVE */
 .jitsi-container{
-  width:100%;height:720px;background:#000;position:relative;overflow:hidden;
+  width:100%;
+  min-height:600px;
+  height:auto;
+  background:#000;
+  position:relative;
+  overflow:hidden;
+}
+.jitsi-container iframe{
+  width:100%!important;
+  height:100%!important;
+  min-height:600px;
 }
 
 /* ============ PANTALLA DE ESPERA PERSONALIZADA ============ */
 .jitsi-placeholder{
-  width:100%;height:100%;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;padding:40px;
+  width:100%;
+  min-height:600px;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:40px 20px;
   background:
     radial-gradient(circle at 50% 40%,rgba(255,92,28,.12) 0%,transparent 50%),
     radial-gradient(circle at 20% 80%,rgba(255,138,77,.08) 0%,transparent 40%),
@@ -243,17 +242,23 @@ h2 .grad{background:linear-gradient(90deg,var(--orange),var(--orange2));-webkit-
 .whiteboard-info ul{
   list-style:none;font-size:.9rem;color:var(--muted);line-height:1.8;
 }
-.whiteboard-info li{padding-left:20px;position:relative}
+.whiteboard-info li{padding-left:20px;position:relative;margin-bottom:6px}
 .whiteboard-info li::before{
   content:"▸";position:absolute;left:0;color:var(--orange);
 }
 
+/* BANNER INFERIOR - SE DESVANECE CUANDO JITSI CARGA */
 .jitsi-banner{
   position:absolute;left:0;right:0;bottom:0;
   padding:12px 24px;text-align:center;
   background:linear-gradient(90deg,rgba(0,74,173,.95),rgba(0,100,200,.95));
   color:#fff;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.85rem;
   letter-spacing:.15em;text-transform:uppercase;z-index:5;
+  transition:opacity .5s ease;
+}
+.jitsi-banner.hidden{
+  opacity:0;
+  pointer-events:none;
 }
 
 /* ============ FEATURES GRID ============ */
@@ -298,21 +303,28 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:none}
 
-/* ============ LEDS ============ */
-.leds{display:flex;gap:14px;justify-content:center;align-items:center;padding:6px 0;margin-top:30px}
-.led{width:7px;height:7px;border-radius:50%;background:#1a2040;animation:ledblink 2.4s infinite}
-.led.o{--lc:var(--orange)} .led.g{--lc:var(--gold)} .led.v{--lc:var(--green)}
-@keyframes ledblink{0%,100%{background:#1a2040;box-shadow:none}12%{background:var(--lc);box-shadow:0 0 10px var(--lc),0 0 22px var(--lc)}30%{background:#1a2040;box-shadow:none}}
-
+/* ============ OPTIMIZACIÓN MÓVIL ============ */
 @media(max-width:900px){
-  .jitsi-container{height:500px}
+  .jitsi-container,.jitsi-container iframe,.jitsi-placeholder{min-height:500px}
   .nav-links a:not(.live-badge){display:none}
   .live-badge{margin-left:0;margin-top:8px}
+  /* Desactivar animaciones pesadas en móvil */
+  .ring1,.ring2,.ring3{animation:none}
+  #particles{display:none}
+  .brain-box svg{filter:drop-shadow(0 0 15px rgba(255,92,28,.3))}
 }
 @media(max-width:600px){
-  .jitsi-container{height:400px}
+  .jitsi-container,.jitsi-container iframe,.jitsi-placeholder{min-height:450px}
   .jitsi-header{flex-direction:column;text-align:center}
   .session-info{text-align:center;margin-left:0}
+  .placeholder-logo{font-size:3rem}
+  .whiteboard-info{padding:16px 20px}
+}
+
+/* Reducir movimiento para usuarios que lo prefieren */
+@media (prefers-reduced-motion: reduce) {
+  *{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+  #particles{display:none}
 }
 </style>
 </head>
@@ -359,12 +371,6 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
   <h1 class="glitch">ON LINGUISTIC AIR</h1>
   <p class="sub">Centro de Transmisiones en Vivo con <strong>Pizarra Colaborativa</strong>. Sesiones interactivas de alto impacto neurocognitivo donde el inglés <strong>no se traduce, se construye</strong>.</p>
 
-  <div class="leds">
-    <span class="led o"></span><span class="led g" style="animation-delay:.2s"></span>
-    <span class="led v" style="animation-delay:.4s"></span><span class="led o" style="animation-delay:.6s"></span>
-    <span class="led g" style="animation-delay:.8s"></span><span class="led v" style="animation-delay:1s"></span>
-  </div>
-
   <div class="cta-row">
     <a href="#studio" class="btn-neon primary">⚡ Entrar al Estudio</a>
     <a href="#features" class="btn-neon">Ver Características</a>
@@ -400,7 +406,7 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
         <div class="whiteboard-info">
           <h4>📋 Pizarra Colaborativa Activa</h4>
           <ul>
-            <li>Busca el ícono <strong>Whiteboard</strong> en la barra inferior</li>
+            <li>Busca el ícono <strong>Whiteboard</strong> en la barra inferior (o en el menú de más opciones <strong>⋮</strong>)</li>
             <li>Tú y tus estudiantes pueden dibujar y escribir en tiempo real</li>
             <li>Perfecto para explicar estructuras posicionales del inglés</li>
             <li>Todo se sincroniza automáticamente entre participantes</li>
@@ -409,7 +415,7 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
       </div>
     </div>
 
-    <div class="jitsi-banner">
+    <div class="jitsi-banner" id="jitsi-banner">
       Discovery MAX Neuroeducation – LIVE PRO SESSION
     </div>
   </div>
@@ -439,7 +445,7 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
       <p>Cancelación de eco y ruido. Optimizado para enseñanza de idiomas y pronunciación precisa.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">️</div>
+      <div class="feature-icon">🖥️</div>
       <h4>Compartir Pantalla</h4>
       <p>Muestra presentaciones, documentos o cualquier aplicación. Ideal para ejercicios prácticos.</p>
     </div>
@@ -466,19 +472,33 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
 </footer>
 
 <script>
-/* ============ PARTICLES ============ */
+/* ============ PARTICLES (OPTIMIZADO - SOLO EN DESKTOP) ============ */
 (function(){
+  // Desactivar partículas en móvil para reducir carga de CPU
+  if(window.innerWidth < 900) return;
+  
   const cv=document.getElementById('particles'),ctx=cv.getContext('2d');
   let W,H,parts=[];
   const COLORS=['rgba(255,92,28,','rgba(255,138,77,','rgba(255,201,77,','rgba(43,255,167,'];
   function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight}
   resize();addEventListener('resize',resize);
-  for(let i=0;i<60;i++){
+  
+  // Reducir número de partículas de 60 a 30
+  for(let i=0;i<30;i++){
     parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.5,
-      vy:-(Math.random()*.3+.05),vx:(Math.random()-.5)*.15,
-      c:COLORS[Math.floor(Math.random()*COLORS.length)],a:Math.random(),da:(Math.random()*.02+.005)});
+      vy:-(Math.random()*.2+.03),vx:(Math.random()-.5)*.1,
+      c:COLORS[Math.floor(Math.random()*COLORS.length)],a:Math.random(),da:(Math.random()*.015+.003)});
   }
-  function tick(){
+  
+  let lastTime=0;
+  function tick(timestamp){
+    // Limitar FPS a 30 en lugar de 60 para reducir CPU
+    if(timestamp - lastTime < 33){
+      requestAnimationFrame(tick);
+      return;
+    }
+    lastTime = timestamp;
+    
     ctx.clearRect(0,0,W,H);
     parts.forEach(p=>{
       p.y+=p.vy;p.x+=p.vx;p.a+=p.da;
@@ -486,8 +506,8 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
       if(p.y<-10){p.y=H+10;p.x=Math.random()*W}
       if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;
       ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=p.c+(Math.abs(p.a)*.6)+')';
-      ctx.shadowBlur=8;ctx.shadowColor=p.c+'.5)';
+      ctx.fillStyle=p.c+(Math.abs(p.a)*.5)+')';
+      ctx.shadowBlur=6;ctx.shadowColor=p.c+'.4)';
       ctx.fill();ctx.shadowBlur=0;
     });
     requestAnimationFrame(tick);
@@ -501,17 +521,16 @@ const io=new IntersectionObserver(es=>{
 },{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-/* ============ JITSI INTEGRATION (8x8.vc con magic cookie) ============ */
+/* ============ JITSI INTEGRATION CON PIZARRA HABILITADA ============ */
 let jitsiApi=null;
 const startBtn=document.getElementById('start-session-btn');
 const placeholder=document.getElementById('jitsi-placeholder');
 const container=document.getElementById('jitsi-container');
+const banner=document.getElementById('jitsi-banner');
 
 startBtn.addEventListener('click',async function(){
-  // Nombre de la sala (el mismo que usas en Weebly)
   const roomName='vpaas-magic-cookie-9289aa6ec00547668e1797f10bae5834/DiscoveryAppDiplomaticDecisionMakingsSurpriseOut';
   
-  // Configuración de Jitsi (8x8.vc con tu magic cookie)
   const options={
     roomName:roomName,
     parentNode:container,
@@ -521,53 +540,64 @@ startBtn.addEventListener('click',async function(){
     configOverwrite:{
       startWithAudioMuted:true,
       startWithVideoMuted:true,
-      whiteboard:{enabled:true}, // Pizarra habilitada
       enableClosePage:false,
-      prejoinPageEnabled:false
+      prejoinPageEnabled:false,
+      // Pizarra habilitada
+      whiteboard:{
+        enabled:true,
+        collabServerBaseUrl:'https://whiteboard.8x8.vc'
+      },
+      // Asegurar que la toolbar esté siempre visible
+      toolbarConfig:{
+        autoHideWhileInPiPMode:false,
+        initialTimeout:20000,
+        timeout:4000
+      }
     },
     interfaceConfigOverwrite:{
+      // Toolbar completa con pizarra incluida
       TOOLBAR_BUTTONS:[
-        'microphone','camera','closedcaptions','desktop','fullscreen',
-        'fodeviceselection','hangup','profile','chat','recording',
-        'livestreaming','etherpad','sharedvideo','settings','raisehand',
-        'videoquality','filmstrip','feedback','stats','shortcuts',
-        'tileview','videobackgroundblur','download','help','mute-everyone',
-        'security','whiteboard' // ← Pizarra habilitada
+        'microphone','camera','desktop','fullscreen',
+        'hangup','chat','raisehand','tileview',
+        'whiteboard','settings','help','security'
       ],
+      // Configuración de toolbar
+      TOOLBAR_ALWAYS_VISIBLE:true,
       SHOW_JITSI_WATERMARK:false,
       SHOW_WATERMARK_FOR_GUESTS:false,
-      DEFAULT_BACKGROUND:'#0a0a0f'
+      DEFAULT_BACKGROUND:'#0a0a0f',
+      // Asegurar que los controles sean accesibles
+      VERTICAL_FILMSTRIP:false,
+      filmStripMaxHeight:150
     }
   };
 
-  // Remover placeholder y crear instancia
-  placeholder.remove();
+  // Remover placeholder
+  placeholder.style.display='none';
+  
+  // Ocultar banner cuando Jitsi carga
+  banner.classList.add('hidden');
   
   try{
     jitsiApi=new JitsiMeetExternalAPI('8x8.vc',options);
     
     jitsiApi.addEventListener('videoConferenceJoined',()=>{
-      console.log('✅ Sesión iniciada:',roomName);
+      console.log('✅ Sesión iniciada con pizarra habilitada');
     });
     
     jitsiApi.addEventListener('videoConferenceLeft',()=>{
       console.log('❌ Sesión finalizada');
+      // Mostrar de nuevo el placeholder y banner
+      placeholder.style.display='flex';
+      banner.classList.remove('hidden');
     });
   }catch(err){
     console.error('Error al iniciar Jitsi:',err);
-    container.innerHTML='<div style="padding:40px;color:#ff4d6a;text-align:center;font-family:Inter,sans-serif;"><h3 style="margin-bottom:12px">No se pudo iniciar la sala</h3><p>Intenta recargar la página o verifica tu conexión.</p></div>';
+    placeholder.style.display='flex';
+    banner.classList.remove('hidden');
+    container.innerHTML='<div style="padding:40px;color:#ff4d6a;text-align:center;font-family:Inter,sans-serif;min-height:450px;display:flex;flex-direction:column;justify-content:center;"><h3 style="margin-bottom:12px">No se pudo iniciar la sala</h3><p>Intenta recargar la página o verifica tu conexión.</p></div>';
   }
 });
 </script>
 </body>
 </html>
-
-
-              <script>
-                              const roomName='vpaas-magic-cookie-9289aa6ec00547668e1797f10bae5834/TU_NUEVA_SALA';
-
-
-              </script>
-                        </body>
-                        </html>
-                    
