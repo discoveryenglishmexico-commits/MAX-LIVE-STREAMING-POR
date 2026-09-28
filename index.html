@@ -1,0 +1,567 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <style>
+                body {
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+
+                
+              </style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On Linguistic Air | Live Neural Sessions - Discovery MAX</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/index.css">
+<script src='https://meet.jit.si/external_api.js'></script>
+<style>
+:root{
+  --bg:#04050e;
+  --bg2:#080b1c;
+  --panel:#0b0f24;
+  --panel2:#0e1330;
+  --cyan:#00e5ff;
+  --magenta:#ff2fd6;
+  --gold:#ffc94d;
+  --green:#2bffa7;
+  --red:#ff4d6a;
+  --orange:#ff5c1c;
+  --txt:#e8ecff;
+  --muted:#9aa3c7;
+  --line:rgba(0,229,255,.16);
+}
+body.light-mode{
+  --bg:#f0f2f5;
+  --bg2:#e6e9f0;
+  --panel:#ffffff;
+  --panel2:#f7f9fc;
+  --cyan:#0088aa;
+  --magenta:#cc0066;
+  --gold:#b8860b;
+  --green:#008800;
+  --txt:#111111;
+  --muted:#555555;
+  --line:rgba(0,136,170,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  line-height:1.65;
+  transition:background .5s ease,color .5s ease;
+}
+::selection{background:var(--magenta);color:#fff}
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 0%,transparent 40%,rgba(2,3,10,.75) 100%)}
+body.light-mode .vignette{background:radial-gradient(ellipse at 50% 0%,transparent 50%,rgba(240,242,245,.6) 100%)}
+.wrap{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 24px}
+
+/* ============ NAV ============ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:blur(16px);
+  background:rgba(4,5,14,.85);
+  border-bottom:1px solid var(--line);
+  transition:background .5s ease;
+}
+body.light-mode nav{background:rgba(240,242,245,.9)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.logo{
+  font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:.12em;
+  background:linear-gradient(90deg,var(--cyan),var(--magenta),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;text-decoration:none
+}
+.logo .zap{color:var(--gold);-webkit-text-fill-color:var(--gold);animation:zapflick 3s infinite}
+@keyframes zapflick{0%,90%,100%{opacity:1}92%{opacity:.2}94%{opacity:1}96%{opacity:.3}}
+.nav-links{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap;align-items:center}
+.nav-links a{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;padding:7px 12px;border-radius:8px;
+  border:1px solid transparent;transition:.3s;position:relative;
+}
+.nav-links a:hover{color:var(--cyan);border-color:rgba(0,229,255,.35);
+  box-shadow:0 0 14px rgba(0,229,255,.25);text-shadow:0 0 8px var(--cyan)}
+body.light-mode .nav-links a:hover{text-shadow:none}
+.nav-links a.active{color:#fff;border-color:var(--magenta);
+  box-shadow:0 0 16px rgba(255,47,214,.4);text-shadow:0 0 8px var(--magenta)}
+.theme-btn{
+  background:transparent;border:1px solid var(--line);color:var(--txt);cursor:pointer;
+  padding:8px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  transition:.3s;margin-left:6px;
+}
+.theme-btn:hover{color:var(--cyan);border-color:var(--cyan);box-shadow:0 0 14px rgba(0,229,255,.3);transform:scale(1.08)}
+.live-badge{
+  display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;
+  font-size:.65rem;font-weight:700;letter-spacing:.18em;color:var(--green);
+  border:1px solid rgba(43,255,167,.4);background:rgba(43,255,167,.08);
+  padding:8px 14px;border-radius:999px;white-space:nowrap;margin-left:16px;
+}
+.live-badge i{
+  width:7px;height:7px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 10px var(--green);animation:blink 1.2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ============ HERO ============ */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;position:relative;padding:140px 24px 80px;
+  background:radial-gradient(circle at 50% 30%,rgba(255,92,28,.08) 0%,transparent 60%);
+}
+.brain-box{position:relative;width:280px;height:280px;margin-bottom:10px}
+.brain-box svg{width:100%;height:100%;filter:drop-shadow(0 0 26px rgba(0,229,255,.35))}
+.ring{fill:none;stroke-width:1.2;stroke-dasharray:6 10;transform-origin:140px 140px}
+.ring1{stroke:rgba(0,229,255,.5);animation:spin 26s linear infinite}
+.ring2{stroke:rgba(255,47,214,.4);animation:spin 34s linear infinite reverse}
+.ring3{stroke:rgba(255,201,77,.35);animation:spin 44s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.kicker{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.5em;
+  text-transform:uppercase;color:var(--cyan);text-shadow:0 0 14px var(--cyan);margin-bottom:16px;
+}
+body.light-mode .kicker{text-shadow:none}
+h1.glitch{
+  font-family:'Space Grotesk',sans-serif;font-weight:900;
+  font-size:clamp(2.4rem,7vw,5rem);letter-spacing:.02em;line-height:1.05;position:relative;
+  background:linear-gradient(92deg,#fff 10%,var(--cyan) 45%,var(--magenta) 75%,var(--gold) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:20px;
+}
+.hero p.sub{max-width:720px;margin:0 auto 30px;color:var(--muted);font-size:clamp(1rem,2vw,1.15rem);line-height:1.7}
+.hero p.sub strong{color:var(--txt)}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.btn-neon{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.8rem;
+  padding:16px 32px;border-radius:12px;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;
+  transition:.35s;border:1px solid var(--cyan);color:var(--cyan);background:rgba(0,229,255,.05);
+}
+.btn-neon::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transition:.6s}
+.btn-neon:hover::after{left:130%}
+.btn-neon:hover{color:#fff;background:rgba(0,229,255,.16);
+  box-shadow:0 0 24px rgba(0,229,255,.55);text-shadow:0 0 10px var(--cyan);transform:translateY(-3px)}
+.btn-neon.mg{border-color:var(--magenta);color:var(--magenta);background:rgba(255,47,214,.05)}
+.btn-neon.mg:hover{background:rgba(255,47,214,.16);
+  box-shadow:0 0 24px rgba(255,47,214,.55);color:#fff;text-shadow:0 0 10px var(--magenta)}
+.btn-neon.orange{border-color:var(--orange);color:var(--orange);background:rgba(255,92,28,.05)}
+.btn-neon.orange:hover{background:rgba(255,92,28,.16);box-shadow:0 0 24px rgba(255,92,28,.55)}
+
+/* ============ STUDIO SECTION ============ */
+.studio-section{padding:100px 0;background:linear-gradient(180deg,transparent,rgba(255,92,28,.03))}
+.sec-head{margin-bottom:50px;text-align:center}
+.sec-num{
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.4em;
+  color:var(--magenta);text-shadow:0 0 12px var(--magenta);display:block;margin-bottom:12px;
+}
+body.light-mode .sec-num{text-shadow:none}
+h2{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;
+  font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;letter-spacing:.02em;margin-bottom:16px;
+}
+h2 .grad{background:linear-gradient(90deg,var(--cyan),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head p{color:var(--muted);max-width:760px;margin:0 auto}
+
+/* ============ JITSI CONTAINER ============ */
+.jitsi-wrapper{
+  max-width:1200px;margin:0 auto;background:linear-gradient(160deg,var(--panel),var(--bg2));
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  box-shadow:0 0 60px rgba(255,92,28,.15),inset 0 0 0 1px rgba(255,255,255,.03);
+}
+body.light-mode .jitsi-wrapper{box-shadow:0 14px 50px rgba(0,0,0,.1)}
+.jitsi-header{
+  background:linear-gradient(135deg,rgba(255,92,28,.15),rgba(255,92,28,.05));
+  border-bottom:1px solid var(--line);padding:22px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.onair-badge{
+  display:flex;gap:9px;align-items:center;font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;font-weight:700;letter-spacing:.2em;color:var(--red);
+  padding:9px 16px;border-radius:999px;background:rgba(244,88,106,.12);
+  border:1px solid rgba(244,88,106,.4);
+}
+.onair-badge i{
+  width:8px;height:8px;border-radius:50%;background:var(--red);
+  animation:blink 1.4s infinite;
+}
+.session-info{margin-left:auto;text-align:right}
+.session-info .title{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--txt);
+}
+.session-info .meta{
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);margin-top:4px;
+}
+.jitsi-container{
+  width:100%;height:720px;background:#000;position:relative;
+}
+.jitsi-placeholder{
+  width:100%;height:100%;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:40px;
+  background:radial-gradient(circle at center,rgba(255,92,28,.08) 0%,transparent 70%);
+}
+.jitsi-placeholder h3{
+  font-family:'Space Grotesk',sans-serif;font-size:1.8rem;margin-bottom:16px;color:var(--txt);
+}
+.jitsi-placeholder p{
+  color:var(--muted);max-width:500px;margin-bottom:28px;line-height:1.7;
+}
+.start-btn{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;padding:18px 42px;border-radius:12px;cursor:pointer;
+  background:linear-gradient(135deg,var(--orange),#d64405);color:#fff;border:none;
+  font-size:.85rem;box-shadow:0 12px 32px rgba(255,92,28,.35);transition:.3s;
+}
+.start-btn:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(255,92,28,.5)}
+.whiteboard-info{
+  margin-top:30px;padding:20px 28px;background:rgba(0,229,255,.05);
+  border:1px solid rgba(0,229,255,.25);border-radius:12px;text-align:left;max-width:600px;
+}
+.whiteboard-info h4{
+  font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--cyan);
+  margin-bottom:12px;letter-spacing:.1em;text-transform:uppercase;
+}
+.whiteboard-info ul{
+  list-style:none;font-size:.9rem;color:var(--muted);line-height:1.8;
+}
+.whiteboard-info li{padding-left:20px;position:relative}
+.whiteboard-info li::before{
+  content:"▸";position:absolute;left:0;color:var(--magenta);
+}
+.jitsi-banner{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:12px 24px;text-align:center;
+  background:linear-gradient(90deg,rgba(255,92,28,.95),rgba(255,138,77,.95));
+  color:#fff;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.85rem;
+  letter-spacing:.15em;text-transform:uppercase;
+}
+
+/* ============ FEATURES GRID ============ */
+.features-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:22px;max-width:1200px;margin:60px auto 0;
+}
+.feature-card{
+  background:linear-gradient(160deg,var(--panel),var(--bg2));
+  border:1px solid var(--line);border-radius:16px;padding:28px;transition:.35s;
+  position:relative;overflow:hidden;
+}
+.feature-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:.5;
+}
+.feature-card:hover{transform:translateY(-5px);border-color:rgba(255,92,28,.4);
+  box-shadow:0 14px 40px rgba(255,92,28,.15)}
+.feature-icon{
+  width:52px;height:52px;border-radius:12px;display:flex;align-items:center;
+  justify-content:center;font-size:1.6rem;margin-bottom:18px;
+  background:rgba(255,92,28,.12);border:1px solid rgba(255,92,28,.35);
+}
+.feature-card h4{
+  font-family:'Space Grotesk',sans-serif;font-size:1.1rem;margin-bottom:10px;color:var(--txt);
+}
+.feature-card p{color:var(--muted);font-size:.92rem;line-height:1.7}
+
+/* ============ FOOTER ============ */
+footer{
+  border-top:1px solid var(--line);padding:60px 24px 40px;text-align:center;
+  margin-top:80px;background:linear-gradient(180deg,transparent,rgba(8,11,28,.9));
+}
+footer .f-logo{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.2em;font-size:1rem;
+  background:linear-gradient(90deg,var(--cyan),var(--magenta),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:12px;
+}
+footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospace;letter-spacing:.06em}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .jitsi-container{height:500px}
+  .nav-links a:not(.theme-btn){display:none}
+  .live-badge{margin-left:0;margin-top:8px}
+}
+@media(max-width:600px){
+  .jitsi-container{height:400px}
+  .jitsi-header{flex-direction:column;text-align:center}
+  .session-info{text-align:center;margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="vignette"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><span class="zap">⚡</span> ON LINGUISTIC AIR</a>
+    <div class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#studio">Estudio</a>
+      <a href="#features">Características</a>
+      <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema" title="Modo Claro / Oscuro">
+        <svg id="theme-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></svg>
+      </button>
+      <div class="live-badge"><i></i>LIVE</div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="inicio">
+  <div class="brain-box">
+    <svg viewBox="0 0 280 280">
+      <defs>
+        <radialGradient id="coreg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#00e5ff" stop-opacity=".9"/>
+          <stop offset="55%" stop-color="#ff2fd6" stop-opacity=".35"/>
+          <stop offset="100%" stop-color="#04050e" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="140" cy="140" r="82" fill="url(#coreg)"/>
+      <circle class="ring ring1" cx="140" cy="140" r="110"/>
+      <circle class="ring ring2" cx="140" cy="140" r="124"/>
+      <circle class="ring ring3" cx="140" cy="140" r="137"/>
+      <g fill="none" stroke="#00e5ff" stroke-width="1.6" opacity=".85" stroke-linecap="round">
+        <path d="M140 65 C110 65 93 86 97 109 C82 115 78 136 91 146 C85 165 98 182 117 178 C123 195 148 199 158 184 C177 188 190 172 184 152 C199 142 195 119 180 113 C186 90 169 65 140 65 Z"/>
+      </g>
+      <style>@keyframes dash{from{stroke-dashoffset:420}to{stroke-dashoffset:0}}</style>
+    </svg>
+  </div>
+
+  <div class="kicker">Discovery MAX Neuroeducation</div>
+  <h1 class="glitch">ON LINGUISTIC AIR</h1>
+  <p class="sub">Centro de Transmisiones en Vivo con <strong>Pizarra Colaborativa</strong>. Sesiones interactivas de alto impacto neurocognitivo donde el inglés se construye, no se traduce.</p>
+
+  <div class="cta-row">
+    <a href="#studio" class="btn-neon orange">⚡ Entrar al Estudio</a>
+    <a href="#features" class="btn-neon">Ver Características</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- STUDIO SECTION -->
+<section id="studio" class="studio-section reveal">
+  <div class="sec-head">
+    <span class="sec-num">// ESTUDIO DE TRANSMISIÓN</span>
+    <h2>Consola Neural <span class="grad">En Vivo</span></h2>
+    <p>Conéctate a la sesión en tiempo real. La pizarra colaborativa está habilitada para ejercicios interactivos, anotaciones en vivo y construcción visual de estructuras lingüísticas.</p>
+  </div>
+
+  <div class="jitsi-wrapper">
+    <div class="jitsi-header">
+      <div class="onair-badge"><i></i>ON AIR</div>
+      <div class="session-info">
+        <div class="title">Discovery MAX - Live Session</div>
+        <div class="meta">NFB Methodology • Interactive Whiteboard Active</div>
+      </div>
+    </div>
+
+    <div class="jitsi-container" id="jitsi-container">
+      <div class="jitsi-placeholder" id="jitsi-placeholder">
+        <h3>🎥 Estudio Listo para Transmitir</h3>
+        <p>Presiona el botón para iniciar la sesión. La pizarra colaborativa estará disponible desde el menú de herramientas (ícono de cuadrado con lápiz).</p>
+        <button class="start-btn" id="start-session-btn">▶ INICIAR SESIÓN EN VIVO</button>
+        
+        <div class="whiteboard-info">
+          <h4>📋 Cómo usar la Pizarra Colaborativa</h4>
+          <ul>
+            <li>Busca el ícono <strong>Whiteboard</strong> (pizarra) en la barra inferior</li>
+            <li>Tú y tus estudiantes pueden dibujar, escribir y pegar imágenes</li>
+            <li>Todo se sincroniza en tiempo real para todos los participantes</li>
+            <li>Perfecto para explicar estructuras posicionales del inglés</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="jitsi-banner">
+      Discovery MAX Neuroeducation — Live Pro Session with Whiteboard
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="reveal" style="padding:100px 0">
+  <div class="sec-head">
+    <span class="sec-num">// CARACTERÍSTICAS</span>
+    <h2>Experiencia <span class="grad">Inmersiva</span></h2>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon"></div>
+      <h4>Video HD en Tiempo Real</h4>
+      <p>Transmisión de alta calidad con baja latencia. Conexión directa sin necesidad de descargas o registros.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h4>Pizarra Colaborativa</h4>
+      <p>Espacio infinito para dibujar, escribir y visualizar conceptos. Todos los participantes pueden interactuar.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">️</div>
+      <h4>Audio Profesional</h4>
+      <p>Cancelación de eco y ruido. Optimizado para enseñanza de idiomas y pronunciación precisa.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">️</div>
+      <h4>Compartir Pantalla</h4>
+      <p>Muestra presentaciones, documentos o cualquier aplicación. Ideal para ejercicios prácticos.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h4>Chat Integrado</h4>
+      <p>Comunicación por texto durante la sesión. Comparte enlaces y recursos sin interrumpir.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h4>Sesión Segura</h4>
+      <p>Sala protegida con control de acceso. Tú decides quién participa en la clase.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo"> ON LINGUISTIC AIR</div>
+  <p>Powered by Discovery MAX Neuroeducation</p>
+  <p style="margin-top:8px;opacity:.6">NFB Methodology • The English Positional Architecture</p>
+</footer>
+
+<script>
+/* ============ PARTICLES ============ */
+(function(){
+  const cv=document.getElementById('particles'),ctx=cv.getContext('2d');
+  let W,H,parts=[];
+  const COLORS=['rgba(0,229,255,','rgba(255,47,214,','rgba(255,201,77,','rgba(255,92,28,'];
+  function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+  resize();addEventListener('resize',resize);
+  for(let i=0;i<60;i++){
+    parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.5,
+      vy:-(Math.random()*.3+.05),vx:(Math.random()-.5)*.15,
+      c:COLORS[Math.floor(Math.random()*COLORS.length)],a:Math.random(),da:(Math.random()*.02+.005)});
+  }
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    parts.forEach(p=>{
+      p.y+=p.vy;p.x+=p.vx;p.a+=p.da;
+      if(p.a>1||p.a<0)p.da*=-1;
+      if(p.y<-10){p.y=H+10;p.x=Math.random()*W}
+      if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.c+(Math.abs(p.a)*.6)+')';
+      ctx.shadowBlur=8;ctx.shadowColor=p.c+'.5)';
+      ctx.fill();ctx.shadowBlur=0;
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+/* ============ THEME TOGGLE ============ */
+const themeBtn=document.getElementById('theme-toggle');
+const themeIcon=document.getElementById('theme-icon');
+const sunIcon=`<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
+const moonIcon=`<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');themeIcon.innerHTML=moonIcon}
+themeBtn.addEventListener('click',()=>{
+  document.body.classList.toggle('light-mode');
+  if(document.body.classList.contains('light-mode')){localStorage.setItem('theme','light');themeIcon.innerHTML=moonIcon}
+  else{localStorage.setItem('theme','dark');themeIcon.innerHTML=sunIcon}
+});
+
+/* ============ REVEAL ON SCROLL ============ */
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ============ JITSI INTEGRATION ============ */
+let jitsiApi=null;
+const startBtn=document.getElementById('start-session-btn');
+const placeholder=document.getElementById('jitsi-placeholder');
+const container=document.getElementById('jitsi-container');
+
+startBtn.addEventListener('click',async function(){
+  // Generar nombre de sala único o usar uno fijo
+  const roomName='DiscoveryMAX_OnLinguisticAir_'+'Session'+Math.random().toString(36).substring(2,8).toUpperCase();
+  
+  // Configuración de Jitsi
+  const options={
+    roomName:roomName,
+    parentNode:container,
+    width:'100%',
+    height:'100%',
+    lang:'es',
+    configOverwrite:{
+      startWithAudioMuted:false,
+      startWithVideoMuted:false,
+      whiteboard:{enabled:true}, // Habilitar pizarra
+      enableClosePage:false,
+      prejoinPageEnabled:false
+    },
+    interfaceConfigOverwrite:{
+      // Asegurar que la pizarra esté visible en la toolbar
+      TOOLBAR_BUTTONS:[
+        'microphone','camera','closedcaptions','desktop','fullscreen',
+        'fodeviceselection','hangup','profile','chat','recording',
+        'livestreaming','etherpad','sharedvideo','settings','raisehand',
+        'videoquality','filmstrip','feedback','stats','shortcuts',
+        'tileview','videobackgroundblur','download','help','mute-everyone',
+        'security','whiteboard' // ← Pizarra habilitada
+      ],
+      SHOW_JITSI_WATERMARK:false,
+      SHOW_WATERMARK_FOR_GUESTS:false,
+      DEFAULT_BACKGROUND:'#04050e'
+    }
+  };
+
+  // Remover placeholder y crear instancia
+  placeholder.remove();
+  
+  try{
+    jitsiApi=new JitsiMeetExternalAPI('meet.jit.si',options);
+    
+    // Event listeners opcionales
+    jitsiApi.addEventListener('videoConferenceJoined',()=>{
+      console.log('✅ Sesión iniciada:',roomName);
+    });
+    
+    jitsiApi.addEventListener('videoConferenceLeft',()=>{
+      console.log('❌ Sesión finalizada');
+    });
+  }catch(err){
+    console.error('Error al iniciar Jitsi:',err);
+    container.innerHTML='<div style="padding:40px;color:#ff4d6a;text-align:center;font-family:Inter,sans-serif;"><h3 style="margin-bottom:12px">No se pudo iniciar la sala</h3><p>Intenta recargar la página o verifica tu conexión.</p></div>';
+  }
+});
+</script>
+</body>
+</html>
+
+
+              <script>
+                              const roomName='DiscoveryMAX_OnLinguisticAir_SesionFija';
+
+
+              </script>
+                        </body>
+                        </html>
+                    
