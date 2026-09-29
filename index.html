@@ -528,11 +528,11 @@ const placeholder=document.getElementById('jitsi-placeholder');
 const container=document.getElementById('jitsi-container');
 const banner=document.getElementById('jitsi-banner');
 
-startBtn.addEventListener('click',async function(){
-  const roomName='vpaas-magic-cookie-9289aa6ec00547668e1797f10bae5834/DiscoveryAppDiplomaticDecisionMakingsSurpriseOut';
-  
-  const options={
-    roomName:roomName,
+wbBtn.addEventListener('click',function(){
+  if(!jitsiApi)return;
+  try{ jitsiApi.executeCommand('toggleWhiteboard'); }catch(e){}
+  toast('📝 Pizarra: en PC está en la barra inferior (cuadrito con lápiz). En celular toca los tres puntos "…" y busca "Whiteboard / Pizarra".');
+});
     parentNode:container,
     width:'100%',
     height:'100%',
