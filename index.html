@@ -3,38 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Discovery MAX Neuroeducation — Live Pro Session</title>
+<title>Discovery MAX Neuroeducation — On Linguistic Air | Live Pro Session</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5/index.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/index.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/index.css">
-<script src='https://8x8.vc/vpaas-magic-cookie-9289aa6ec00547668e1797f10bae5834/external_api.js'></script>
+<!-- API oficial de Jitsi (tu tenant JaaS 8x8.vc) -->
+<script src="https://8x8.vc/vpaas-magic-cookie-9289aa6ec00547668e1797f10bae5834/external_api.js" async></script>
 <style>
 :root{
-  --bg:#04050e;
-  --bg2:#080b1c;
-  --panel:#0b0f24;
-  --panel2:#0e1330;
-  --orange:#ff5c1c;
-  --orange2:#ff8a4d;
-  --orange-deep:#c93a04;
-  --cyan:#00e5ff;
-  --magenta:#ff2fd6;
-  --gold:#ffc94d;
-  --green:#2bffa7;
-  --red:#ff4d6a;
-  --txt:#e8ecff;
-  --muted:#9aa3c7;
-  --line:rgba(255,92,28,.2);
+  --bg:#04050e; --bg2:#080b1c; --panel:#0b0f24; --panel2:#0e1330;
+  --orange:#ff5c1c; --orange2:#ff8a4d; --orange-deep:#c93a04;
+  --gold:#ffc94d; --green:#2bffa7; --red:#ff4d6a;
+  --txt:#e8ecff; --muted:#9aa3c7; --line:rgba(255,92,28,.2);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  background:var(--bg);
-  color:var(--txt);
-  font-family:'Inter',sans-serif;
-  overflow-x:hidden;
-  line-height:1.65;
-}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.65}
 ::selection{background:var(--orange);color:#fff}
 #particles{position:fixed;inset:0;z-index:0;pointer-events:none}
 .vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
@@ -42,288 +26,167 @@ body{
 .wrap{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 24px}
 
 /* ============ NAV ============ */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  backdrop-filter:blur(16px);
-  background:rgba(4,5,14,.85);
-  border-bottom:1px solid var(--line);
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);
+  background:rgba(4,5,14,.85);border-bottom:1px solid var(--line)}
 .nav-inner{max-width:1400px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.logo{
-  font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:1.1rem;letter-spacing:.1em;
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:1.1rem;letter-spacing:.1em;
   background:linear-gradient(90deg,var(--orange),var(--orange2),var(--gold));
   -webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;text-decoration:none;
-  display:flex;align-items:center;gap:10px;
-}
+  display:flex;align-items:center;gap:10px}
 .logo .brain-icon{font-size:1.4rem;-webkit-text-fill-color:initial;filter:drop-shadow(0 0 8px rgba(255,92,28,.6))}
 .nav-links{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap;align-items:center}
-.nav-links a{
-  font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--muted);text-decoration:none;padding:7px 12px;border-radius:8px;
-  border:1px solid transparent;transition:.3s;
-}
-.nav-links a:hover{color:var(--orange);border-color:rgba(255,92,28,.35);
-  box-shadow:0 0 14px rgba(255,92,28,.25);text-shadow:0 0 8px var(--orange)}
-.nav-links a.active{color:#fff;border-color:var(--orange);
-  box-shadow:0 0 16px rgba(255,92,28,.4);text-shadow:0 0 8px var(--orange)}
-.live-badge{
-  display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;
-  font-size:.65rem;font-weight:700;letter-spacing:.18em;color:var(--green);
-  border:1px solid rgba(43,255,167,.4);background:rgba(43,255,167,.08);
-  padding:8px 14px;border-radius:999px;white-space:nowrap;margin-left:16px;
-}
-.live-badge i{
-  width:7px;height:7px;border-radius:50%;background:var(--green);
-  box-shadow:0 0 10px var(--green);animation:blink 1.2s infinite;
-}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;padding:7px 12px;border-radius:8px;border:1px solid transparent;transition:.3s}
+.nav-links a:hover{color:var(--orange);border-color:rgba(255,92,28,.35);box-shadow:0 0 14px rgba(255,92,28,.25)}
+.live-badge{display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  font-weight:700;letter-spacing:.18em;color:var(--green);border:1px solid rgba(43,255,167,.4);
+  background:rgba(43,255,167,.08);padding:8px 14px;border-radius:999px;white-space:nowrap;margin-left:16px}
+.live-badge i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:blink 1.2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ============ HERO ============ */
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
-  text-align:center;position:relative;padding:140px 24px 80px;
-  background:radial-gradient(circle at 50% 30%,rgba(255,92,28,.1) 0%,transparent 60%);
-}
-.brain-box{position:relative;width:280px;height:280px;margin-bottom:10px}
-.brain-box svg{width:100%;height:100%;filter:drop-shadow(0 0 30px rgba(255,92,28,.4))}
-.ring{fill:none;stroke-width:1.2;stroke-dasharray:6 10;transform-origin:140px 140px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  position:relative;padding:140px 24px 80px;
+  background:radial-gradient(circle at 50% 30%,rgba(255,92,28,.1) 0%,transparent 60%)}
+.brain-box{position:relative;width:260px;height:260px;margin-bottom:10px}
+.brain-box svg{width:100%;height:100%;filter:drop-shadow(0 0 26px rgba(255,92,28,.35))}
+.ring{fill:none;stroke-width:1.2;stroke-dasharray:6 10;transform-origin:130px 130px}
 .ring1{stroke:rgba(255,92,28,.6);animation:spin 26s linear infinite}
 .ring2{stroke:rgba(255,138,77,.4);animation:spin 34s linear infinite reverse}
 .ring3{stroke:rgba(255,201,77,.35);animation:spin 44s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.kicker{
-  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.5em;
-  text-transform:uppercase;color:var(--orange);text-shadow:0 0 14px var(--orange);margin-bottom:16px;
-}
-h1.glitch{
-  font-family:'Space Grotesk',sans-serif;font-weight:900;
-  font-size:clamp(2.4rem,7vw,5rem);letter-spacing:.02em;line-height:1.05;position:relative;
+.kicker{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--orange);text-shadow:0 0 14px var(--orange);margin-bottom:16px}
+h1.glitch{font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(2.4rem,7vw,5rem);
+  letter-spacing:.02em;line-height:1.05;
   background:linear-gradient(92deg,#fff 10%,var(--orange) 45%,var(--orange2) 75%,var(--gold) 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:20px;
-}
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:20px}
 .hero p.sub{max-width:720px;margin:0 auto 30px;color:var(--muted);font-size:clamp(1rem,2vw,1.15rem);line-height:1.7}
 .hero p.sub strong{color:var(--txt)}
 .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:30px}
-.btn-neon{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.8rem;
-  padding:16px 32px;border-radius:12px;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;
-  transition:.35s;border:1px solid var(--orange);color:var(--orange);background:rgba(255,92,28,.05);
-}
+.btn-neon{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  font-size:.8rem;padding:16px 32px;border-radius:12px;cursor:pointer;text-decoration:none;position:relative;
+  overflow:hidden;transition:.35s;border:1px solid var(--orange);color:var(--orange);background:rgba(255,92,28,.05)}
 .btn-neon::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transition:.6s}
 .btn-neon:hover::after{left:130%}
-.btn-neon:hover{color:#fff;background:rgba(255,92,28,.16);
-  box-shadow:0 0 24px rgba(255,92,28,.55);text-shadow:0 0 10px var(--orange);transform:translateY(-3px)}
-.btn-neon.primary{
-  background:linear-gradient(135deg,var(--orange),var(--orange-deep));color:#fff;border-color:var(--orange);
-  box-shadow:0 12px 32px rgba(255,92,28,.35);
-}
-.btn-neon.primary:hover{box-shadow:0 18px 44px rgba(255,92,28,.55);transform:translateY(-3px)}
+.btn-neon:hover{color:#fff;background:rgba(255,92,28,.16);box-shadow:0 0 24px rgba(255,92,28,.55);transform:translateY(-3px)}
+.btn-neon.primary{background:linear-gradient(135deg,var(--orange),var(--orange-deep));color:#fff;
+  box-shadow:0 12px 32px rgba(255,92,28,.35)}
+.btn-neon.primary:hover{box-shadow:0 18px 44px rgba(255,92,28,.55)}
 
-/* ============ STUDIO SECTION ============ */
-.studio-section{padding:100px 0;background:linear-gradient(180deg,transparent,rgba(255,92,28,.03))}
-.sec-head{margin-bottom:50px;text-align:center}
-.sec-num{
-  font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.4em;
-  color:var(--orange);text-shadow:0 0 12px var(--orange);display:block;margin-bottom:12px;
-}
-h2{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;
-  font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;letter-spacing:.02em;margin-bottom:16px;
-}
+/* ============ SECCIONES ============ */
+section{padding:90px 0;position:relative}
+.sec-head{margin-bottom:46px;text-align:center}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.4em;color:var(--orange);
+  text-shadow:0 0 12px var(--orange);display:block;margin-bottom:12px}
+h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:16px}
 h2 .grad{background:linear-gradient(90deg,var(--orange),var(--orange2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .sec-head p{color:var(--muted);max-width:760px;margin:0 auto}
 
-/* ============ JITSI CONTAINER (OPTIMIZADO) ============ */
-.jitsi-wrapper{
-  max-width:1200px;margin:0 auto;
-  background:linear-gradient(160deg,var(--panel),var(--bg2));
-  border:3px solid var(--orange);
-  border-radius:20px;overflow:hidden;
-  box-shadow:0 0 80px rgba(255,92,28,.2),0 0 0 1px rgba(255,92,28,.1);
-  position:relative;
-}
-.jitsi-wrapper::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+/* ============ CONSOLA JITSI ============ */
+.jitsi-wrapper{max-width:1200px;margin:0 auto;background:linear-gradient(160deg,var(--panel),var(--bg2));
+  border:3px solid var(--orange);border-radius:20px;overflow:hidden;position:relative;
+  box-shadow:0 0 70px rgba(255,92,28,.18)}
+.jitsi-wrapper::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:10;
   background:linear-gradient(90deg,var(--orange),var(--orange2),var(--gold),var(--orange));
-  background-size:200% 100%;
-  animation:gradientMove 4s linear infinite;
-  z-index:10;
-}
+  background-size:200% 100%;animation:gradientMove 4s linear infinite}
 @keyframes gradientMove{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-
-.jitsi-header{
-  background:linear-gradient(135deg,rgba(255,92,28,.15),rgba(255,92,28,.05));
-  border-bottom:1px solid var(--line);padding:18px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-}
-.onair-badge{
-  display:flex;gap:9px;align-items:center;font-family:'JetBrains Mono',monospace;
-  font-size:.7rem;font-weight:700;letter-spacing:.2em;color:var(--red);
-  padding:9px 16px;border-radius:999px;background:rgba(244,88,106,.12);
-  border:1px solid rgba(244,88,106,.4);
-}
-.onair-badge i{
-  width:8px;height:8px;border-radius:50%;background:var(--red);
-  animation:blink 1.4s infinite;
-}
+.jitsi-header{background:linear-gradient(135deg,rgba(255,92,28,.15),rgba(255,92,28,.05));
+  border-bottom:1px solid var(--line);padding:16px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.onair-badge{display:flex;gap:9px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  font-weight:700;letter-spacing:.2em;color:var(--red);padding:9px 16px;border-radius:999px;
+  background:rgba(244,88,106,.12);border:1px solid rgba(244,88,106,.4)}
+.onair-badge i{width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1.4s infinite}
 .session-info{margin-left:auto;text-align:right}
-.session-info .title{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--txt);
-}
-.session-info .meta{
-  font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);margin-top:4px;
-}
+.session-info .title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt)}
+.session-info .meta{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin-top:4px}
+.wb-btn{display:none;margin-left:12px;padding:9px 16px;border-radius:999px;border:1px solid rgba(255,92,28,.5);
+  background:rgba(255,92,28,.12);color:var(--orange2);font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  font-weight:700;letter-spacing:.14em;cursor:pointer;transition:.3s}
+.wb-btn.show{display:inline-block}
+.wb-btn:hover{background:rgba(255,92,28,.25);box-shadow:0 0 16px rgba(255,92,28,.4)}
 
-/* CONTROLES DE JITSI - RESPONSIVE */
-.jitsi-container{
-  width:100%;
-  min-height:600px;
-  height:auto;
-  background:#000;
-  position:relative;
-  overflow:hidden;
-}
-.jitsi-container iframe{
-  width:100%!important;
-  height:100%!important;
-  min-height:600px;
-}
+.jitsi-container{width:100%;min-height:620px;background:#000;position:relative;overflow:hidden}
+.jitsi-container iframe{width:100%!important;height:100%!important;border:0}
 
-/* ============ PANTALLA DE ESPERA PERSONALIZADA ============ */
-.jitsi-placeholder{
-  width:100%;
-  min-height:600px;
-  display:flex;flex-direction:column;align-items:center;
+/* Pantalla de espera Discovery */
+.jitsi-placeholder{width:100%;min-height:620px;display:flex;flex-direction:column;align-items:center;
   justify-content:center;text-align:center;padding:40px 20px;
-  background:
-    radial-gradient(circle at 50% 40%,rgba(255,92,28,.12) 0%,transparent 50%),
-    radial-gradient(circle at 20% 80%,rgba(255,138,77,.08) 0%,transparent 40%),
-    linear-gradient(180deg,#0a0a0f 0%,#050508 100%);
-  position:relative;
-}
-.placeholder-logo{
-  font-size:4rem;margin-bottom:20px;
-  filter:drop-shadow(0 0 20px rgba(255,92,28,.6));
-  animation:float 3s ease-in-out infinite;
-}
+  background:radial-gradient(circle at 50% 40%,rgba(255,92,28,.12) 0%,transparent 50%),
+             linear-gradient(180deg,#0a0a0f 0%,#050508 100%)}
+.placeholder-logo{font-size:4rem;margin-bottom:18px;filter:drop-shadow(0 0 20px rgba(255,92,28,.6));
+  animation:float 3s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.placeholder-title{
-  font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);
-  font-weight:900;color:#fff;margin-bottom:16px;
-  background:linear-gradient(90deg,#fff,var(--orange2));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.placeholder-subtitle{
-  color:var(--muted);max-width:500px;margin-bottom:32px;line-height:1.7;font-size:1rem;
-}
-.start-btn{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;padding:18px 42px;border-radius:12px;cursor:pointer;
-  background:linear-gradient(135deg,var(--orange),var(--orange-deep));color:#fff;border:none;
-  font-size:.9rem;box-shadow:0 12px 32px rgba(255,92,28,.4);transition:.3s;
-  position:relative;overflow:hidden;
-}
-.start-btn::before{
-  content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);transition:.6s;
-}
+.placeholder-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;
+  margin-bottom:14px;background:linear-gradient(90deg,#fff,var(--orange2));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.placeholder-subtitle{color:var(--muted);max-width:520px;margin-bottom:30px;line-height:1.7}
+.start-btn{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:18px 42px;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,var(--orange),var(--orange-deep));
+  color:#fff;border:none;font-size:.9rem;box-shadow:0 12px 32px rgba(255,92,28,.4);transition:.3s;position:relative;overflow:hidden}
+.start-btn::before{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);transition:.6s}
 .start-btn:hover::before{left:130%}
 .start-btn:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(255,92,28,.6)}
-.start-btn:active{transform:translateY(-1px)}
+.whiteboard-info{margin-top:30px;padding:20px 26px;background:rgba(255,92,28,.08);
+  border:1px solid rgba(255,92,28,.3);border-radius:12px;text-align:left;max-width:600px}
+.whiteboard-info h4{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--orange2);
+  margin-bottom:12px;letter-spacing:.1em;text-transform:uppercase}
+.whiteboard-info ul{list-style:none;font-size:.9rem;color:var(--muted);line-height:1.8}
+.whiteboard-info li{padding-left:20px;position:relative;margin-bottom:5px}
+.whiteboard-info li::before{content:"▸";position:absolute;left:0;color:var(--orange)}
 
-.whiteboard-info{
-  margin-top:32px;padding:20px 28px;background:rgba(255,92,28,.08);
-  border:1px solid rgba(255,92,28,.3);border-radius:12px;text-align:left;max-width:600px;
-}
-.whiteboard-info h4{
-  font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--orange2);
-  margin-bottom:12px;letter-spacing:.1em;text-transform:uppercase;
-}
-.whiteboard-info ul{
-  list-style:none;font-size:.9rem;color:var(--muted);line-height:1.8;
-}
-.whiteboard-info li{padding-left:20px;position:relative;margin-bottom:6px}
-.whiteboard-info li::before{
-  content:"▸";position:absolute;left:0;color:var(--orange);
-}
+/* Banner inferior (se oculta durante la llamada) */
+.jitsi-banner{position:absolute;left:0;right:0;bottom:0;padding:12px 24px;text-align:center;z-index:5;
+  background:linear-gradient(90deg,rgba(0,74,173,.95),rgba(0,100,200,.95));color:#fff;
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.82rem;letter-spacing:.15em;
+  text-transform:uppercase;transition:opacity .5s ease}
+.jitsi-banner.hidden{opacity:0;pointer-events:none}
 
-/* BANNER INFERIOR - SE DESVANECE CUANDO JITSI CARGA */
-.jitsi-banner{
-  position:absolute;left:0;right:0;bottom:0;
-  padding:12px 24px;text-align:center;
-  background:linear-gradient(90deg,rgba(0,74,173,.95),rgba(0,100,200,.95));
-  color:#fff;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.85rem;
-  letter-spacing:.15em;text-transform:uppercase;z-index:5;
-  transition:opacity .5s ease;
-}
-.jitsi-banner.hidden{
-  opacity:0;
-  pointer-events:none;
-}
-
-/* ============ FEATURES GRID ============ */
-.features-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:22px;max-width:1200px;margin:60px auto 0;
-}
-.feature-card{
-  background:linear-gradient(160deg,var(--panel),var(--bg2));
-  border:1px solid var(--line);border-radius:16px;padding:28px;transition:.35s;
-  position:relative;overflow:hidden;
-}
-.feature-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:.5;
-}
-.feature-card:hover{transform:translateY(-5px);border-color:rgba(255,92,28,.4);
-  box-shadow:0 14px 40px rgba(255,92,28,.15)}
-.feature-icon{
-  width:52px;height:52px;border-radius:12px;display:flex;align-items:center;
-  justify-content:center;font-size:1.6rem;margin-bottom:18px;
-  background:rgba(255,92,28,.12);border:1px solid rgba(255,92,28,.35);
-}
-.feature-card h4{
-  font-family:'Space Grotesk',sans-serif;font-size:1.1rem;margin-bottom:10px;color:var(--txt);
-}
+/* ============ FEATURES ============ */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;max-width:1200px;margin:0 auto}
+.feature-card{background:linear-gradient(160deg,var(--panel),var(--bg2));border:1px solid var(--line);
+  border-radius:16px;padding:28px;transition:.35s;position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:.5}
+.feature-card:hover{transform:translateY(-5px);border-color:rgba(255,92,28,.4);box-shadow:0 14px 40px rgba(255,92,28,.15)}
+.feature-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;margin-bottom:18px;background:rgba(255,92,28,.12);border:1px solid rgba(255,92,28,.35)}
+.feature-card h4{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;margin-bottom:10px;color:var(--txt)}
 .feature-card p{color:var(--muted);font-size:.92rem;line-height:1.7}
 
 /* ============ FOOTER ============ */
-footer{
-  border-top:1px solid var(--line);padding:60px 24px 40px;text-align:center;
-  margin-top:80px;background:linear-gradient(180deg,transparent,rgba(8,11,28,.9));
-}
-footer .f-logo{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.15em;font-size:1rem;
+footer{border-top:1px solid var(--line);padding:56px 24px 40px;text-align:center;margin-top:70px;
+  background:linear-gradient(180deg,transparent,rgba(8,11,28,.9))}
+footer .f-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.15em;font-size:1rem;
   background:linear-gradient(90deg,var(--orange),var(--orange2),var(--gold));
-  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:12px;
-}
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:12px}
 footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospace;letter-spacing:.06em}
 
-/* ============ REVEAL ============ */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
-.reveal.visible{opacity:1;transform:none}
+/* ============ REVEAL (a prueba de fallos: solo oculta si JS vive) ============ */
+.reveal{transition:opacity .8s ease,transform .8s ease}
+body.js .reveal{opacity:0;transform:translateY(36px)}
+body.js .reveal.visible{opacity:1;transform:none}
 
-/* ============ OPTIMIZACIÓN MÓVIL ============ */
+/* ============ RESPONSIVE + AHORRO DE BATERÍA ============ */
 @media(max-width:900px){
-  .jitsi-container,.jitsi-container iframe,.jitsi-placeholder{min-height:500px}
-  .nav-links a:not(.live-badge){display:none}
-  .live-badge{margin-left:0;margin-top:8px}
-  /* Desactivar animaciones pesadas en móvil */
-  .ring1,.ring2,.ring3{animation:none}
-  #particles{display:none}
-  .brain-box svg{filter:drop-shadow(0 0 15px rgba(255,92,28,.3))}
+  .jitsi-container,.jitsi-placeholder{min-height:520px}
+  .nav-links a{display:none}
+  .live-badge{margin-left:0}
+  .ring1,.ring2,.ring3{animation:none}          /* menos CPU en móvil */
+  #particles{display:none}                       /* sin partículas en móvil */
+  .brain-box svg{filter:drop-shadow(0 0 12px rgba(255,92,28,.25))}
 }
 @media(max-width:600px){
-  .jitsi-container,.jitsi-container iframe,.jitsi-placeholder{min-height:450px}
+  .jitsi-container,.jitsi-placeholder{min-height:460px}
   .jitsi-header{flex-direction:column;text-align:center}
   .session-info{text-align:center;margin-left:0}
+  .wb-btn{margin-left:0}
   .placeholder-logo{font-size:3rem}
-  .whiteboard-info{padding:16px 20px}
 }
-
-/* Reducir movimiento para usuarios que lo prefieren */
-@media (prefers-reduced-motion: reduce) {
-  *{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   #particles{display:none}
 }
 </style>
@@ -336,7 +199,7 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo"><span class="brain-icon">🧠</span> DISCOVERY MAX</a>
+    <a href="#inicio" class="logo"><span class="brain-icon">🧠</span> DISCOVERY MAX</a>
     <div class="nav-links">
       <a href="#inicio">Inicio</a>
       <a href="#studio">Estudio</a>
@@ -349,7 +212,7 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
 <!-- HERO -->
 <header class="hero" id="inicio">
   <div class="brain-box">
-    <svg viewBox="0 0 280 280">
+    <svg viewBox="0 0 260 260">
       <defs>
         <radialGradient id="coreg" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stop-color="#ff5c1c" stop-opacity=".9"/>
@@ -357,20 +220,18 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
           <stop offset="100%" stop-color="#04050e" stop-opacity="0"/>
         </radialGradient>
       </defs>
-      <circle cx="140" cy="140" r="82" fill="url(#coreg)"/>
-      <circle class="ring ring1" cx="140" cy="140" r="110"/>
-      <circle class="ring ring2" cx="140" cy="140" r="124"/>
-      <circle class="ring ring3" cx="140" cy="140" r="137"/>
+      <circle cx="130" cy="130" r="76" fill="url(#coreg)"/>
+      <circle class="ring ring1" cx="130" cy="130" r="102"/>
+      <circle class="ring ring2" cx="130" cy="130" r="115"/>
+      <circle class="ring ring3" cx="130" cy="130" r="127"/>
       <g fill="none" stroke="#ff5c1c" stroke-width="1.6" opacity=".85" stroke-linecap="round">
-        <path d="M140 65 C110 65 93 86 97 109 C82 115 78 136 91 146 C85 165 98 182 117 178 C123 195 148 199 158 184 C177 188 190 172 184 152 C199 142 195 119 180 113 C186 90 169 65 140 65 Z"/>
+        <path d="M130 60 C102 60 86 80 90 101 C76 107 72 126 85 135 C79 153 91 169 109 165 C115 181 138 185 147 171 C165 175 177 160 171 141 C185 132 181 110 167 104 C173 83 157 60 130 60 Z"/>
       </g>
     </svg>
   </div>
-
   <div class="kicker">Discovery MAX Neuroeducation</div>
   <h1 class="glitch">ON LINGUISTIC AIR</h1>
   <p class="sub">Centro de Transmisiones en Vivo con <strong>Pizarra Colaborativa</strong>. Sesiones interactivas de alto impacto neurocognitivo donde el inglés <strong>no se traduce, se construye</strong>.</p>
-
   <div class="cta-row">
     <a href="#studio" class="btn-neon primary">⚡ Entrar al Estudio</a>
     <a href="#features" class="btn-neon">Ver Características</a>
@@ -379,20 +240,21 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
 
 <main class="wrap">
 
-<!-- STUDIO SECTION -->
-<section id="studio" class="studio-section reveal">
-  <div class="sec-head">
+<!-- ESTUDIO -->
+<section id="studio">
+  <div class="sec-head reveal">
     <span class="sec-num">// ESTUDIO DE TRANSMISIÓN</span>
     <h2>Consola Neural <span class="grad">En Vivo</span></h2>
-    <p>Conéctate a la sesión en tiempo real. La pizarra colaborativa está habilitada para ejercicios interactivos, anotaciones en vivo y construcción visual de estructuras lingüísticas.</p>
+    <p>Conéctate a la sesión en tiempo real. La pizarra colaborativa está habilitada para ejercicios interactivos y construcción visual de estructuras lingüísticas.</p>
   </div>
 
-  <div class="jitsi-wrapper">
+  <div class="jitsi-wrapper reveal">
     <div class="jitsi-header">
       <div class="onair-badge"><i></i>ON AIR</div>
+      <button class="wb-btn" id="wb-btn">📝 PIZARRA</button>
       <div class="session-info">
         <div class="title">Discovery MAX Neuroeducation</div>
-        <div class="meta">NFB Methodology • Interactive Whiteboard Active</div>
+        <div class="meta">NFB Methodology • Whiteboard Active</div>
       </div>
     </div>
 
@@ -402,69 +264,40 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
         <h3 class="placeholder-title">Discovery MAX Neuroeducation</h3>
         <p class="placeholder-subtitle">Pulsa el botón cuando quieras iniciar la sesión. La sesión no se conectará automáticamente.</p>
         <button class="start-btn" id="start-session-btn">▶ Entrar a la sesión</button>
-        
         <div class="whiteboard-info">
           <h4>📋 Pizarra Colaborativa Activa</h4>
           <ul>
-            <li>Busca el ícono <strong>Whiteboard</strong> en la barra inferior (o en el menú de más opciones <strong>⋮</strong>)</li>
-            <li>Tú y tus estudiantes pueden dibujar y escribir en tiempo real</li>
-            <li>Perfecto para explicar estructuras posicionales del inglés</li>
-            <li>Todo se sincroniza automáticamente entre participantes</li>
+            <li>En <strong>PC</strong>: ícono de cuadrito con lápiz en la barra inferior.</li>
+            <li>En <strong>celular</strong>: menú de tres puntos <strong>⋮</strong> → "Whiteboard / Pizarra".</li>
+            <li>O usa el botón <strong>📝 PIZARRA</strong> de la cabecera al entrar.</li>
+            <li>Todo se sincroniza en tiempo real entre participantes.</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="jitsi-banner" id="jitsi-banner">
-      Discovery MAX Neuroeducation – LIVE PRO SESSION
-    </div>
+    <div class="jitsi-banner" id="jitsi-banner">Discovery MAX Neuroeducation – LIVE PRO SESSION</div>
   </div>
 </section>
 
 <!-- FEATURES -->
-<section id="features" class="reveal" style="padding:100px 0">
-  <div class="sec-head">
+<section id="features">
+  <div class="sec-head reveal">
     <span class="sec-num">// CARACTERÍSTICAS</span>
     <h2>Experiencia <span class="grad">Inmersiva</span></h2>
   </div>
-
   <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">🎥</div>
-      <h4>Video HD en Tiempo Real</h4>
-      <p>Transmisión de alta calidad con baja latencia. Conexión directa sin necesidad de descargas o registros.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📝</div>
-      <h4>Pizarra Colaborativa</h4>
-      <p>Espacio infinito para dibujar, escribir y visualizar conceptos. Todos los participantes pueden interactuar.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🎙️</div>
-      <h4>Audio Profesional</h4>
-      <p>Cancelación de eco y ruido. Optimizado para enseñanza de idiomas y pronunciación precisa.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🖥️</div>
-      <h4>Compartir Pantalla</h4>
-      <p>Muestra presentaciones, documentos o cualquier aplicación. Ideal para ejercicios prácticos.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💬</div>
-      <h4>Chat Integrado</h4>
-      <p>Comunicación por texto durante la sesión. Comparte enlaces y recursos sin interrumpir.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔒</div>
-      <h4>Sesión Segura</h4>
-      <p>Sala protegida con control de acceso. Tú decides quién participa en la clase.</p>
-    </div>
+    <div class="feature-card reveal"><div class="feature-icon">🎥</div><h4>Video HD en Tiempo Real</h4><p>Transmisión de alta calidad con baja latencia, sin descargas ni registros.</p></div>
+    <div class="feature-card reveal"><div class="feature-icon">📝</div><h4>Pizarra Colaborativa</h4><p>Espacio infinito para dibujar y escribir. Todos los participantes interactúan.</p></div>
+    <div class="feature-card reveal"><div class="feature-icon">🎙️</div><h4>Audio Profesional</h4><p>Cancelación de eco y ruido, optimizado para enseñanza de idiomas.</p></div>
+    <div class="feature-card reveal"><div class="feature-icon">🖥️</div><h4>Compartir Pantalla</h4><p>Muestra presentaciones o documentos para ejercicios prácticos.</p></div>
+    <div class="feature-card reveal"><div class="feature-icon">💬</div><h4>Chat Integrado</h4><p>Comparte enlaces y recursos por texto sin interrumpir la sesión.</p></div>
+    <div class="feature-card reveal"><div class="feature-icon">🔒</div><h4>Sesión Segura</h4><p>Sala protegida con control de acceso para tus clases.</p></div>
   </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="f-logo">🧠 DISCOVERY MAX NEUROEDUCATION</div>
   <p>Powered by NFB Methodology • The English Positional Architecture</p>
@@ -472,131 +305,136 @@ footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospa
 </footer>
 
 <script>
-/* ============ PARTICLES (OPTIMIZADO - SOLO EN DESKTOP) ============ */
+/* ============ 0) MARCA JS (si el script falla, la página SIGUE visible) ============ */
+document.body.classList.add('js');
+
+/* ============ 1) PARTÍCULAS (solo desktop, 30 FPS, bajo consumo) ============ */
 (function(){
-  // Desactivar partículas en móvil para reducir carga de CPU
   if(window.innerWidth < 900) return;
-  
-  const cv=document.getElementById('particles'),ctx=cv.getContext('2d');
-  let W,H,parts=[];
-  const COLORS=['rgba(255,92,28,','rgba(255,138,77,','rgba(255,201,77,','rgba(43,255,167,'];
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var cv=document.getElementById('particles'); if(!cv) return;
+  var ctx=cv.getContext('2d'),W,H,parts=[];
+  var COLORS=['rgba(255,92,28,','rgba(255,138,77,','rgba(255,201,77,','rgba(43,255,167,'];
   function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight}
-  resize();addEventListener('resize',resize);
-  
-  // Reducir número de partículas de 60 a 30
-  for(let i=0;i<30;i++){
+  resize(); addEventListener('resize',resize);
+  for(var i=0;i<30;i++){
     parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.5,
       vy:-(Math.random()*.2+.03),vx:(Math.random()-.5)*.1,
       c:COLORS[Math.floor(Math.random()*COLORS.length)],a:Math.random(),da:(Math.random()*.015+.003)});
   }
-  
-  let lastTime=0;
-  function tick(timestamp){
-    // Limitar FPS a 30 en lugar de 60 para reducir CPU
-    if(timestamp - lastTime < 33){
-      requestAnimationFrame(tick);
-      return;
-    }
-    lastTime = timestamp;
-    
+  var last=0;
+  function tick(t){
+    requestAnimationFrame(tick);
+    if(t-last<33) return; last=t;
     ctx.clearRect(0,0,W,H);
-    parts.forEach(p=>{
+    for(var j=0;j<parts.length;j++){
+      var p=parts[j];
       p.y+=p.vy;p.x+=p.vx;p.a+=p.da;
       if(p.a>1||p.a<0)p.da*=-1;
       if(p.y<-10){p.y=H+10;p.x=Math.random()*W}
-      if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;
+      if(p.x<-10)p.x=W+10; if(p.x>W+10)p.x=-10;
       ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
       ctx.fillStyle=p.c+(Math.abs(p.a)*.5)+')';
-      ctx.shadowBlur=6;ctx.shadowColor=p.c+'.4)';
-      ctx.fill();ctx.shadowBlur=0;
-    });
-    requestAnimationFrame(tick);
+      ctx.fill();
+    }
   }
-  tick();
+  requestAnimationFrame(tick);
 })();
 
-/* ============ REVEAL ON SCROLL ============ */
-const io=new IntersectionObserver(es=>{
-  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-/* ============ JITSI INTEGRATION CON PIZARRA HABILITADA ============ */
-let jitsiApi=null;
-const startBtn=document.getElementById('start-session-btn');
-const placeholder=document.getElementById('jitsi-placeholder');
-const container=document.getElementById('jitsi-container');
-const banner=document.getElementById('jitsi-banner');
-
-wbBtn.addEventListener('click',function(){
-  if(!jitsiApi)return;
-  try{ jitsiApi.executeCommand('toggleWhiteboard'); }catch(e){}
-  toast('📝 Pizarra: en PC está en la barra inferior (cuadrito con lápiz). En celular toca los tres puntos "…" y busca "Whiteboard / Pizarra".');
-});
-    parentNode:container,
-    width:'100%',
-    height:'100%',
-    lang:'es',
-    /* Configuración MÍNIMA: idéntica a la que Jitsi usa nativamente
-       (por eso directo sí te muestra la pizarra). No tocamos la barra. */
-    configOverwrite:{
-      startWithAudioMuted:true,
-      startWithVideoMuted:true,
-      whiteboard:{enabled:true}   /* refuerzo extra de pizarra */
-    },
-    interfaceConfigOverwrite:{}   /* vacío, igual que tu versión de Weebly */
-  };
-      // Asegurar que la toolbar esté siempre visible
-      toolbarConfig:{
-        autoHideWhileInPiPMode:false,
-        initialTimeout:20000,
-        timeout:4000
-      }
-    },
-    interfaceConfigOverwrite:{
-      // Toolbar completa con pizarra incluida
-      TOOLBAR_BUTTONS:[
-        'microphone','camera','desktop','fullscreen',
-        'hangup','chat','raisehand','tileview',
-        'whiteboard','settings','help','security'
-      ],
-      // Configuración de toolbar
-      TOOLBAR_ALWAYS_VISIBLE:true,
-      SHOW_JITSI_WATERMARK:false,
-      SHOW_WATERMARK_FOR_GUESTS:false,
-      DEFAULT_BACKGROUND:'#0a0a0f',
-      // Asegurar que los controles sean accesibles
-      VERTICAL_FILMSTRIP:false,
-      filmStripMaxHeight:150
-    }
-  };
-
-  // Remover placeholder
-  placeholder.style.display='none';
-  
-  // Ocultar banner cuando Jitsi carga
-  banner.classList.add('hidden');
-  
-  try{
-    jitsiApi=new JitsiMeetExternalAPI('8x8.vc',options);
-    
-    jitsiApi.addEventListener('videoConferenceJoined',()=>{
-      console.log('✅ Sesión iniciada con pizarra habilitada');
-    });
-    
-    jitsiApi.addEventListener('videoConferenceLeft',()=>{
-      console.log('❌ Sesión finalizada');
-      // Mostrar de nuevo el placeholder y banner
-      placeholder.style.display='flex';
-      banner.classList.remove('hidden');
-    });
-  }catch(err){
-    console.error('Error al iniciar Jitsi:',err);
-    placeholder.style.display='flex';
-    banner.classList.remove('hidden');
-    container.innerHTML='<div style="padding:40px;color:#ff4d6a;text-align:center;font-family:Inter,sans-serif;min-height:450px;display:flex;flex-direction:column;justify-content:center;"><h3 style="margin-bottom:12px">No se pudo iniciar la sala</h3><p>Intenta recargar la página o verifica tu conexión.</p></div>';
+/* ============ 2) REVEAL AL SCROLL (con red de seguridad) ============ */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){el.classList.add('visible')});return;
   }
-});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}});
+  },{threshold:.1});
+  els.forEach(function(el){io.observe(el)});
+})();
+
+/* ============ 3) AVISO FLOTANTE ============ */
+function toast(msg){
+  var t=document.getElementById('dma-toast');
+  if(!t){
+    t=document.createElement('div');t.id='dma-toast';
+    t.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:999;'+
+      'background:rgba(255,92,28,.96);color:#fff;font-family:Inter,sans-serif;font-size:.85rem;'+
+      'padding:12px 18px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.4);max-width:90vw;'+
+      'text-align:center;transition:opacity .4s';
+    document.body.appendChild(t);
+  }
+  t.textContent=msg;t.style.opacity='1';
+  clearTimeout(t._h);t._h=setTimeout(function(){t.style.opacity='0'},5000);
+}
+
+/* ============ 4) JITSI (config MÍNIMA = igual que Jitsi nativo, con pizarra) ============ */
+var jitsiApi=null;
+var startBtn=document.getElementById('start-session-btn');
+var placeholder=document.getElementById('jitsi-placeholder');
+var container=document.getElementById('jitsi-container');
+var banner=document.getElementById('jitsi-banner');
+var wbBtn=document.getElementById('wb-btn');
+
+function restorePlaceholder(){
+  if(placeholder) placeholder.style.display='flex';
+  if(banner) banner.classList.remove('hidden');
+  if(wbBtn) wbBtn.classList.remove('show');
+}
+
+if(startBtn){
+  startBtn.addEventListener('click',function(){
+    if(typeof JitsiMeetExternalAPI==='undefined'){
+      toast('⚠️ El sistema de video aún está cargando. Espera 3 segundos y vuelve a pulsar.');
+      return;
+    }
+    var roomName='vpaas-magic-cookie-9289aa6ec00547668e1797f10bae5834/DiscoveryAppDiplomaticDecisionMakingsSurpriseOut';
+
+    /* Configuración MÍNIMA: no tocamos la barra de botones.
+       Así la experiencia es IDÉNTICA a entrar directo a Jitsi (donde sí ves la pizarra). */
+    var options={
+      roomName:roomName,
+      parentNode:container,
+      width:'100%',
+      height:'100%',
+      lang:'es',
+      configOverwrite:{
+        startWithAudioMuted:true,
+        startWithVideoMuted:true,
+        whiteboard:{enabled:true}
+      },
+      interfaceConfigOverwrite:{}
+    };
+
+    if(placeholder) placeholder.style.display='none';
+    if(banner) banner.classList.add('hidden');   /* el banner ya no tapa los controles */
+    if(wbBtn) wbBtn.classList.add('show');
+
+    try{
+      jitsiApi=new JitsiMeetExternalAPI('8x8.vc',options);
+      jitsiApi.addEventListener('videoConferenceJoined',function(){
+        toast('✅ Sesión iniciada. Pizarra: barra inferior (PC) o menú ⋮ (celular).');
+      });
+      jitsiApi.addEventListener('videoConferenceLeft',function(){
+        jitsiApi=null;
+        restorePlaceholder();
+      });
+    }catch(err){
+      console.error(err);
+      restorePlaceholder();
+      toast('❌ No se pudo iniciar la sala. Recarga la página e intenta de nuevo.');
+    }
+  });
+}
+
+/* Botón 📝 PIZARRA de la cabecera */
+if(wbBtn){
+  wbBtn.addEventListener('click',function(){
+    if(!jitsiApi){toast('Primero entra a la sesión.');return}
+    try{ jitsiApi.executeCommand('toggleWhiteboard'); }catch(e){}
+    toast('📝 PC: cuadrito con lápiz en la barra. Celular: menú ⋮ → "Whiteboard".');
+  });
+}
 </script>
 </body>
 </html>
