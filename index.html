@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5/index.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/index.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/index.css">
-<!-- API oficial de Jitsi (tu tenant JaaS 8x8.vc) -->
 <script src="https://8x8.vc/vpaas-magic-cookie-9289aa6ec00547668e1797f10bae5834/external_api.js" async></script>
 <style>
 :root{
@@ -25,7 +24,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;overfl
   background:radial-gradient(ellipse at 50% 0%,transparent 40%,rgba(2,3,10,.85) 100%)}
 .wrap{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 24px}
 
-/* ============ NAV ============ */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);
   background:rgba(4,5,14,.85);border-bottom:1px solid var(--line)}
 .nav-inner{max-width:1400px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
@@ -44,7 +43,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);
 .live-badge i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:blink 1.2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 
-/* ============ HERO ============ */
+/* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
   position:relative;padding:140px 24px 80px;
   background:radial-gradient(circle at 50% 30%,rgba(255,92,28,.1) 0%,transparent 60%)}
@@ -75,7 +74,7 @@ h1.glitch{font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp
   box-shadow:0 12px 32px rgba(255,92,28,.35)}
 .btn-neon.primary:hover{box-shadow:0 18px 44px rgba(255,92,28,.55)}
 
-/* ============ SECCIONES ============ */
+/* SECCIONES */
 section{padding:90px 0;position:relative}
 .sec-head{margin-bottom:46px;text-align:center}
 .sec-num{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.4em;color:var(--orange);
@@ -84,7 +83,7 @@ h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.8rem
 h2 .grad{background:linear-gradient(90deg,var(--orange),var(--orange2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .sec-head p{color:var(--muted);max-width:760px;margin:0 auto}
 
-/* ============ CONSOLA JITSI ============ */
+/* ====== CONSOLA JITSI (CORREGIDA: altura definida + iframe anclado) ====== */
 .jitsi-wrapper{max-width:1200px;margin:0 auto;background:linear-gradient(160deg,var(--panel),var(--bg2));
   border:3px solid var(--orange);border-radius:20px;overflow:hidden;position:relative;
   box-shadow:0 0 70px rgba(255,92,28,.18)}
@@ -107,12 +106,16 @@ h2 .grad{background:linear-gradient(90deg,var(--orange),var(--orange2));-webkit-
 .wb-btn.show{display:inline-block}
 .wb-btn:hover{background:rgba(255,92,28,.25);box-shadow:0 0 16px rgba(255,92,28,.4)}
 
-.jitsi-container{width:100%;min-height:620px;background:#000;position:relative;overflow:hidden}
-.jitsi-container iframe{width:100%!important;height:100%!important;border:0}
+/* ✅ CAMBIO 1: altura DEFINIDA (ya no "mínima") para que el iframe tenga referencia */
+.jitsi-container{position:relative;width:100%;height:72vh;min-height:540px;max-height:980px;
+  background:#000;overflow:hidden}
+/* ✅ CAMBIO 2: iframe anclado ocupando TODO el contenedor, sin importar estilos inline */
+.jitsi-container iframe{position:absolute!important;top:0!important;left:0!important;
+  width:100%!important;height:100%!important;border:0!important}
 
-/* Pantalla de espera Discovery */
-.jitsi-placeholder{width:100%;min-height:620px;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;padding:40px 20px;
+/* Pantalla de espera Discovery (anclada al contenedor) */
+.jitsi-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:40px 20px;overflow:auto;
   background:radial-gradient(circle at 50% 40%,rgba(255,92,28,.12) 0%,transparent 50%),
              linear-gradient(180deg,#0a0a0f 0%,#050508 100%)}
 .placeholder-logo{font-size:4rem;margin-bottom:18px;filter:drop-shadow(0 0 20px rgba(255,92,28,.6));
@@ -137,14 +140,13 @@ h2 .grad{background:linear-gradient(90deg,var(--orange),var(--orange2));-webkit-
 .whiteboard-info li{padding-left:20px;position:relative;margin-bottom:5px}
 .whiteboard-info li::before{content:"▸";position:absolute;left:0;color:var(--orange)}
 
-/* Banner inferior (se oculta durante la llamada) */
 .jitsi-banner{position:absolute;left:0;right:0;bottom:0;padding:12px 24px;text-align:center;z-index:5;
   background:linear-gradient(90deg,rgba(0,74,173,.95),rgba(0,100,200,.95));color:#fff;
   font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.82rem;letter-spacing:.15em;
   text-transform:uppercase;transition:opacity .5s ease}
 .jitsi-banner.hidden{opacity:0;pointer-events:none}
 
-/* ============ FEATURES ============ */
+/* FEATURES */
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;max-width:1200px;margin:0 auto}
 .feature-card{background:linear-gradient(160deg,var(--panel),var(--bg2));border:1px solid var(--line);
   border-radius:16px;padding:28px;transition:.35s;position:relative;overflow:hidden}
@@ -156,7 +158,6 @@ h2 .grad{background:linear-gradient(90deg,var(--orange),var(--orange2));-webkit-
 .feature-card h4{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;margin-bottom:10px;color:var(--txt)}
 .feature-card p{color:var(--muted);font-size:.92rem;line-height:1.7}
 
-/* ============ FOOTER ============ */
 footer{border-top:1px solid var(--line);padding:56px 24px 40px;text-align:center;margin-top:70px;
   background:linear-gradient(180deg,transparent,rgba(8,11,28,.9))}
 footer .f-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.15em;font-size:1rem;
@@ -164,22 +165,21 @@ footer .f-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:12px}
 footer p{color:var(--muted);font-size:.8rem;font-family:'JetBrains Mono',monospace;letter-spacing:.06em}
 
-/* ============ REVEAL (a prueba de fallos: solo oculta si JS vive) ============ */
+/* REVEAL a prueba de fallos */
 .reveal{transition:opacity .8s ease,transform .8s ease}
 body.js .reveal{opacity:0;transform:translateY(36px)}
 body.js .reveal.visible{opacity:1;transform:none}
 
-/* ============ RESPONSIVE + AHORRO DE BATERÍA ============ */
+/* RESPONSIVE + AHORRO */
 @media(max-width:900px){
-  .jitsi-container,.jitsi-placeholder{min-height:520px}
+  .jitsi-container{height:70vh;min-height:480px}
   .nav-links a{display:none}
   .live-badge{margin-left:0}
-  .ring1,.ring2,.ring3{animation:none}          /* menos CPU en móvil */
-  #particles{display:none}                       /* sin partículas en móvil */
-  .brain-box svg{filter:drop-shadow(0 0 12px rgba(255,92,28,.25))}
+  .ring1,.ring2,.ring3{animation:none}
+  #particles{display:none}
 }
 @media(max-width:600px){
-  .jitsi-container,.jitsi-placeholder{min-height:460px}
+  .jitsi-container{height:66vh;min-height:420px}
   .jitsi-header{flex-direction:column;text-align:center}
   .session-info{text-align:center;margin-left:0}
   .wb-btn{margin-left:0}
@@ -196,7 +196,6 @@ body.js .reveal.visible{opacity:1;transform:none}
 <canvas id="particles"></canvas>
 <div class="vignette"></div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#inicio" class="logo"><span class="brain-icon">🧠</span> DISCOVERY MAX</a>
@@ -209,7 +208,6 @@ body.js .reveal.visible{opacity:1;transform:none}
   </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero" id="inicio">
   <div class="brain-box">
     <svg viewBox="0 0 260 260">
@@ -240,7 +238,6 @@ body.js .reveal.visible{opacity:1;transform:none}
 
 <main class="wrap">
 
-<!-- ESTUDIO -->
 <section id="studio">
   <div class="sec-head reveal">
     <span class="sec-num">// ESTUDIO DE TRANSMISIÓN</span>
@@ -262,14 +259,14 @@ body.js .reveal.visible{opacity:1;transform:none}
       <div class="jitsi-placeholder" id="jitsi-placeholder">
         <div class="placeholder-logo">🧠</div>
         <h3 class="placeholder-title">Discovery MAX Neuroeducation</h3>
-        <p class="placeholder-subtitle">Pulsa el botón cuando quieras iniciar la sesión. La sesión no se conectará automáticamente.</p>
+        <p class="placeholder-subtitle">Pulsa el botón para entrar <strong>directamente</strong> a la sesión. Micrófono y cámara inician silenciados.</p>
         <button class="start-btn" id="start-session-btn">▶ Entrar a la sesión</button>
         <div class="whiteboard-info">
           <h4>📋 Pizarra Colaborativa Activa</h4>
           <ul>
             <li>En <strong>PC</strong>: ícono de cuadrito con lápiz en la barra inferior.</li>
-            <li>En <strong>celular</strong>: menú de tres puntos <strong>⋮</strong> → "Whiteboard / Pizarra".</li>
-            <li>O usa el botón <strong>📝 PIZARRA</strong> de la cabecera al entrar.</li>
+            <li>En <strong>celular</strong>: menú de tres puntos <strong>⋯</strong> → "Whiteboard / Pizarra".</li>
+            <li>O usa el botón <strong>📝 PIZARRA</strong> de la cabecera.</li>
             <li>Todo se sincroniza en tiempo real entre participantes.</li>
           </ul>
         </div>
@@ -280,7 +277,6 @@ body.js .reveal.visible{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- FEATURES -->
 <section id="features">
   <div class="sec-head reveal">
     <span class="sec-num">// CARACTERÍSTICAS</span>
@@ -305,10 +301,9 @@ body.js .reveal.visible{opacity:1;transform:none}
 </footer>
 
 <script>
-/* ============ 0) MARCA JS (si el script falla, la página SIGUE visible) ============ */
 document.body.classList.add('js');
 
-/* ============ 1) PARTÍCULAS (solo desktop, 30 FPS, bajo consumo) ============ */
+/* PARTÍCULAS (solo desktop, 30 FPS) */
 (function(){
   if(window.innerWidth < 900) return;
   if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -341,7 +336,7 @@ document.body.classList.add('js');
   requestAnimationFrame(tick);
 })();
 
-/* ============ 2) REVEAL AL SCROLL (con red de seguridad) ============ */
+/* REVEAL */
 (function(){
   var els=document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){
@@ -353,7 +348,7 @@ document.body.classList.add('js');
   els.forEach(function(el){io.observe(el)});
 })();
 
-/* ============ 3) AVISO FLOTANTE ============ */
+/* TOAST */
 function toast(msg){
   var t=document.getElementById('dma-toast');
   if(!t){
@@ -368,7 +363,7 @@ function toast(msg){
   clearTimeout(t._h);t._h=setTimeout(function(){t.style.opacity='0'},5000);
 }
 
-/* ============ 4) JITSI (config MÍNIMA = igual que Jitsi nativo, con pizarra) ============ */
+/* JITSI */
 var jitsiApi=null;
 var startBtn=document.getElementById('start-session-btn');
 var placeholder=document.getElementById('jitsi-placeholder');
@@ -390,8 +385,6 @@ if(startBtn){
     }
     var roomName='vpaas-magic-cookie-9289aa6ec00547668e1797f10bae5834/DiscoveryAppDiplomaticDecisionMakingsSurpriseOut';
 
-    /* Configuración MÍNIMA: no tocamos la barra de botones.
-       Así la experiencia es IDÉNTICA a entrar directo a Jitsi (donde sí ves la pizarra). */
     var options={
       roomName:roomName,
       parentNode:container,
@@ -401,19 +394,21 @@ if(startBtn){
       configOverwrite:{
         startWithAudioMuted:true,
         startWithVideoMuted:true,
-        whiteboard:{enabled:true}
+        whiteboard:{enabled:true},
+        /* ✅ CAMBIO 3: sin pantalla previa → entras DIRECTO con un clic */
+        prejoinConfig:{enabled:false}
       },
       interfaceConfigOverwrite:{}
     };
 
     if(placeholder) placeholder.style.display='none';
-    if(banner) banner.classList.add('hidden');   /* el banner ya no tapa los controles */
+    if(banner) banner.classList.add('hidden');
     if(wbBtn) wbBtn.classList.add('show');
 
     try{
       jitsiApi=new JitsiMeetExternalAPI('8x8.vc',options);
       jitsiApi.addEventListener('videoConferenceJoined',function(){
-        toast('✅ Sesión iniciada. Pizarra: barra inferior (PC) o menú ⋮ (celular).');
+        toast('✅ Dentro de la sesión. Pizarra: barra inferior (PC) o menú ⋯ (celular).');
       });
       jitsiApi.addEventListener('videoConferenceLeft',function(){
         jitsiApi=null;
@@ -427,12 +422,11 @@ if(startBtn){
   });
 }
 
-/* Botón 📝 PIZARRA de la cabecera */
 if(wbBtn){
   wbBtn.addEventListener('click',function(){
     if(!jitsiApi){toast('Primero entra a la sesión.');return}
     try{ jitsiApi.executeCommand('toggleWhiteboard'); }catch(e){}
-    toast('📝 PC: cuadrito con lápiz en la barra. Celular: menú ⋮ → "Whiteboard".');
+    toast('📝 PC: cuadrito con lápiz abajo. Celular: menú ⋯ → "Whiteboard".');
   });
 }
 </script>
